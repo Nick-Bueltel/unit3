@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+Create lists here 
+<form method="post" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Create</button>
+</form>
+    <form action="{% url 'home' %}">
+      {% csrf_token %}
+      <button type="submit">Go Back</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Wish List Items</h2>
+
+{% if items|length == 0 %}
+<h3>No Wish Items Exist</h3>
+{% else %}
+{% for item in items %}
+<table>
+
+    <p style="display: inline">{{item}}</p>
+    <form action="{% url 'items_delete' item.id %}" method="POST">
+        {% csrf_token %}
+        <button>x</button>
+    </form>
+</table>
+{% endfor %}
+{% endif %}
+<form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Add A Wish Item</button>
+</form>
+
+
+
+
+{% endblock %}
